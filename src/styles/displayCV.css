@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.display-cv {
+  font-size: 12pt;
+  width: 8.5in;
+  height: 11in;
+  background-color: #fbfbf8;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  padding: .5in;
+  box-sizing: border-box;
+}
+
+.full-name, .contact-info {
+  align-self: center;
+}
+
+.full-name {
+  font-size: 24pt;
+  font-weight: 900;
+  text-transform: capitalize;
+}
+.contact-info {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+}

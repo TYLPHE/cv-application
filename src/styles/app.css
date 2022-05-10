@@ -1,0 +1,33 @@
+/*
+ * colors
+ * dkblu: #095194
+ * ltblu: #389FFF
+ * mdblu: #1B81E0
+ * dkgld: #945C00
+ * ltgld: #E0951B
+ */
+
+header, form {
+  border: 1px solid gray;
+}
+
+header {
+  font-size: larger;
+  color: white;
+  background-color: #095194;
+}
+
+form {
+  background-color: #dbdada;
+}
+
+label{
+  display: flex;
+  flex-direction: column;
+}
+
+.app {
+  display: flex;
+  gap: 5px;
+  padding-top: 5px;
+}
