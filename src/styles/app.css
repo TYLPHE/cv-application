@@ -18,16 +18,26 @@ header {
 }
 
 form {
-  background-color: #dbdada;
+  background-color: #dbdbdb;
+  color: rgb(32, 32, 32);
 }
 
-label{
+label {
   display: flex;
   flex-direction: column;
 }
-
+input, select {
+  box-sizing: border-box;
+  margin-bottom: .5rem;
+}
 .app {
   display: flex;
   gap: 5px;
   padding-top: 5px;
+}
+.section-title {
+  text-align: center;
+  font-weight: 900;
+  color: #945C00;
+  padding: .5rem .5rem 0 .5rem;
 }

@@ -1,9 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+h1 {
+  border-bottom: 1px solid;
+  font-size: 14pt;
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+}
+
 .display-cv {
   font-size: 12pt;
-  width: 8.5in;
-  height: 11in;
+  min-width: 8.5in;
+  min-height: 11in;
   background-color: #fbfbf8;
   border: 1px solid;
   display: flex;
@@ -24,4 +34,16 @@
 .contact-info {
   font-family: 'Roboto', sans-serif;
   display: flex;
+  padding-bottom: 2rem;
+}
+.section {
+  padding-bottom: 1rem;
+}
+.skill-bold {
+  font-weight: 900;
+}
+.test{
+  width: 300px;
+  height: 250px;
+  background-color: red;
 }
