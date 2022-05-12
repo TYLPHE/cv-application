@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './styles/displayCV.css';
+import Skills from "./CVComponents/Skills";
 
 class DisplayCV extends Component {
   constructor() {
@@ -178,7 +179,7 @@ class DisplayCV extends Component {
     const { 
       name, 
       email, 
-      phoneNumber, 
+      phone, 
       github, 
       linkedin,
       projects,
@@ -190,10 +191,10 @@ class DisplayCV extends Component {
       <div className="display-cv">
         <div className="full-name">{this.splitName(name)}</div>
         <div className="contact-info">
-          <div>{this.splitPhone(phoneNumber)}</div>
+          <div>{this.splitPhone(phone)}</div>
 
           &nbsp;
-          {this.splitter(email, phoneNumber)}
+          {this.splitter(email, phone)}
           &nbsp;
 
           {email}
@@ -210,7 +211,8 @@ class DisplayCV extends Component {
 
           {this.addHyperlink(linkedin, 'LinkedIn')}
         </div>
-        {this.addSkills(skills)}
+        <Skills skills={skills}/>
+        {/* {this.addSkills(skills)} */}
         {this.addProjects(projects)}
         {this.addExperience(experience)}
         {this.addEducation(education)}
