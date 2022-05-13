@@ -3,17 +3,11 @@ import './styles/displayCV.css';
 import Skills from "./CVComponents/Skills";
 
 class DisplayCV extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      window: [],
-      skill: [
-        'Skill #1: ',
-        'Skill #2: ',
-      ]
+      data: null,
     }
-
-    this.editor = this.editor.bind(this);
   }
 
   splitName(str = '') {
@@ -25,7 +19,11 @@ class DisplayCV extends Component {
 
   splitPhone(str = '') {
     if(str.length === 10) {
-      return `(${str.substring(0, 3)}) ${str.substring(3, 6)}-${str.substring(6)}`
+      return (
+        <div>
+          {`(${str.substring(0, 3)}) ${str.substring(3, 6)}-${str.substring(6)}`}
+        </div>
+      );
     }
   }
 
@@ -42,41 +40,6 @@ class DisplayCV extends Component {
           <a href={hyperlink} target='_blank' rel="noreferrer">{str}</a>
         </div>
       );
-    }
-  }
-
-  createWindow = (e, window) => {
-    console.log(e, window);
-    let state = this.state;
-    state.window = <div>test</div>
-    this.setState(state);
-    console.log(state)
-    // return (window)
-  }
-
-  addSkills = (num) => {
-    function skillDiv(num, obj) {
-      let push = [];
-      for (let i = 0; i < num; i += 1) {
-        let div = (
-          <div key={`skill-${i}`} className='section'>
-            <span className="skill-bold" onClick={(e) => obj.createWindow(e, window)}>{obj.state.skill[i]}</span>
-            <span>Skill description</span>
-            {obj.window}
-          </div>
-        );
-        push = [...push, div];
-      }
-      return push;
-    }
-    let returnValue = <div>{skillDiv(num, this)}</div>
-    if (num > 0) {
-      return (
-        <div>
-          <h1>Skills</h1>
-          {returnValue}
-        </div>
-      )
     }
   }
 
@@ -166,13 +129,9 @@ class DisplayCV extends Component {
     }
   }
 
-  editor(e) {
-    console.log(e.target.innerText);
-    const value = e.target.innerText;
-    // e.target.remove();
-    return (
-      <input type={'text'} value={value} />
-    )
+  handleSkillCallback = (childData) => {
+    this.setState({ data: childData });
+    console.log(this.state);
   }
 
   render() {
@@ -182,16 +141,16 @@ class DisplayCV extends Component {
       phone, 
       github, 
       linkedin,
-      projects,
-      skills,
-      experience,
-      education,
+      projectNum,
+      skillNum,
+      experienceNum,
+      educationNum,
     } = this.props;
     return (
       <div className="display-cv">
         <div className="full-name">{this.splitName(name)}</div>
         <div className="contact-info">
-          <div>{this.splitPhone(phone)}</div>
+          {this.splitPhone(phone)}
 
           &nbsp;
           {this.splitter(email, phone)}
@@ -211,11 +170,10 @@ class DisplayCV extends Component {
 
           {this.addHyperlink(linkedin, 'LinkedIn')}
         </div>
-        <Skills skills={skills}/>
-        {/* {this.addSkills(skills)} */}
-        {this.addProjects(projects)}
-        {this.addExperience(experience)}
-        {this.addEducation(education)}
+        <Skills skillNum={skillNum} handleSkillCallback={ this.handleSkillCallback }/>
+        {this.addProjects(projectNum)}
+        {this.addExperience(experienceNum)}
+        {this.addEducation(educationNum)}
       </div>
     );
   }

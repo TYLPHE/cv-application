@@ -3,19 +3,39 @@ import React, { Component } from "react";
 class Skills extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      skill0: 'Programming Languages',
+      desc0: 'React, Javascript, HTML, CSS',
+
+      skill1: 'Technologies',
+      desc1: 'Git, GitHub, Node.js, Linux/Unix, JIRA',
+    }
+
+    // this.props.handleSkillCallback = this.props.handleSkillCallback.bind(this);
   }
 
   render() {
-    const { skills } = this.props;
-    return (
-      <div>
-        skills goes here
-        &nbsp;
-        {skills}
-        {/* <button onClick={() => props.setValue('test')}>click to change value</button> */}
-      </div>
-    );
+    const { skillNum, handleSkillCallback } = this.props;
+    console.log(this.props);
+    let arr = [];
+    for (let i = 0; i < skillNum; i += 1) {
+      let div = (
+        <div key={`skill-${i}`} className={'section'} >
+          <span className="skill-bold" onClick={() => handleSkillCallback('data back from child')}>{ this.state[`skill${i}`] }: </span>
+          <span>{ this.state[`desc${i}`] }</span>
+        </div>
+      );
+      arr = [...arr, div];
+    }
+
+    if (skillNum > 0) {
+      return (
+        <div>
+          <h1>Skills</h1>
+          { arr }
+        </div>
+      )
+    }
   }
 }
 

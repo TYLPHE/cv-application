@@ -3,8 +3,8 @@ import DisplayCV from './DisplayCV';
 import './styles/app.css';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       name: 'tyl phe',
@@ -12,10 +12,10 @@ class App extends Component {
       email: 'test@gmail.com',
       github: 'https://github.com/TYLPHE',
       linkedin: 'https://www.linkedin.com/in/tylphe/',
-      skills: 2,
-      projects: 2,
-      experience: 2,
-      education: 3,
+      skillNum: 2,
+      projectNum: 2,
+      experienceNum: 2,
+      educationNum: 3,
     }
   }
   
@@ -24,10 +24,10 @@ class App extends Component {
   changeEmail = e => this.setState({...this.state, email: e.target.value });
   changeGithub = e => this.setState({ ...this.state, github: e.target.value });
   changeLinkedin = e => this.setState({ ...this.state, linkedin: e.target.value });
-  changeProjects = e => this.setState({ ...this.state, projects: e.target.value });
-  changeSkills = e => this.setState({ ...this.state, skills: e.target.value });
-  changeExperience = e => this.setState({ ...this.state, experience: e.target.value });
-  changeEducation = e => this.setState({ ...this.state, education: e.target.value });
+  changeProjectNum = e => this.setState({ ...this.state, projectNum: e.target.value });
+  changeSkillNum = e => this.setState({ ...this.state, skillNum: e.target.value });
+  changeExperienceNum = e => this.setState({ ...this.state, experienceNum: e.target.value });
+  changeEducationNum = e => this.setState({ ...this.state, educationNum: e.target.value });
 
   preventDefault(e) {
     e.preventDefault();
@@ -83,7 +83,7 @@ class App extends Component {
           <div className='section-title'>Skills</div>
           <label>
             # of skills: 
-            <select onChange={this.changeSkills} defaultValue={2}>
+            <select onChange={this.changeSkillNum} defaultValue={2}>
               <option value={0}>0</option>
               <option value={1}>1</option>
               <option value={2}>2</option>
@@ -93,7 +93,7 @@ class App extends Component {
           <div className='section-title'>Relevant Projects</div>
           <label>
             # of Relevant Projects: 
-            <select onChange={this.changeProjects} defaultValue={2}>
+            <select onChange={this.changeProjectNum} defaultValue={2}>
               <option value={0}>0</option>
               <option value={1}>1</option>
               <option value={2}>2</option>
@@ -103,7 +103,7 @@ class App extends Component {
           <div className='section-title'>Relevant Experience</div>
           <label>
             # of Relevant Experience: 
-            <select onChange={this.changeExperience} defaultValue={2}>
+            <select onChange={this.changeExperienceNum} defaultValue={2}>
               <option value={0}>0</option>
               <option value={1}>1</option>
               <option value={2}>2</option>
@@ -114,7 +114,7 @@ class App extends Component {
           <div className='section-title'>Relevant Education</div>
           <label>
             # of Relevant Education: 
-            <select onChange={this.changeEducation} defaultValue={3}>
+            <select onChange={this.changeEducationNum} defaultValue={3}>
               <option value={0}>0</option>
               <option value={1}>1</option>
               <option value={2}>2</option>
@@ -128,10 +128,10 @@ class App extends Component {
           email={this.state.email}
           github={this.state.github}
           linkedin={this.state.linkedin}
-          projects={this.state.projects}
-          skills={this.state.skills}
-          experience={this.state.experience}
-          education={this.state.education}
+          projectNum={this.state.projectNum}
+          skillNum={this.state.skillNum}
+          experienceNum={this.state.experienceNum}
+          educationNum={this.state.educationNum}
         />
       </div>
     );
