@@ -4,7 +4,7 @@
 ![(gif of project to be inserted here)](https://github.com/TYLPHE/TYLPHE/blob/main/readmeAssets/cv-application.gif)
 
 ## Links
-- [Try CV application here!](https://TYLPHE.github.io/cv-application/public/)
+- [Try CV application here! (work in progress)](https://TYLPHE.github.io/cv-application/public/)
 
 - [Link to the Assignment](https://www.theodinproject.com/lessons/node-path-javascript-cv-application)
 
@@ -20,10 +20,10 @@ Click on each text field within the CV to edit the text.
 
 
 ## Challenges
-### REACT?!
-I've been developing my vanilla JavaScript skills to build a solid foundation for React projects but holy cow this is hard to grasp for now.
+### React?!
+This is it. I've been developing my JavaScript skills to build a solid foundation for React but holy cow this is hard to grasp for now.
 
-Every day is a challenge so far
+Every day is a challenge so far... more to come after I google a few more things...
 
 ### States
 
