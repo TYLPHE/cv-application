@@ -10,8 +10,6 @@ class Skills extends Component {
       skill1: 'Technologies',
       desc1: 'Git, GitHub, Node.js, Linux/Unix, JIRA',
     }
-
-    // this.props.handleSkillCallback = this.props.handleSkillCallback.bind(this);
   }
 
   render() {
