@@ -4,7 +4,7 @@
 ![(gif of project to be inserted here)](https://github.com/TYLPHE/TYLPHE/blob/main/readmeAssets/cv-application.gif)
 
 ## Links
-- [Try CV application here! (work in progress)](https://TYLPHE.github.io/cv-application/public/)
+- [Try CV application here!](https://tylphe.github.io/cv-application/)
 
 - [Link to the Assignment](https://www.theodinproject.com/lessons/node-path-javascript-cv-application)
 
