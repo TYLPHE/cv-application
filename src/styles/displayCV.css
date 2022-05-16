@@ -5,11 +5,9 @@ h1 {
   font-size: 14pt;
   margin: 0;
 }
-
 ul {
   margin: 0;
 }
-
 .display-cv {
   font-size: 12pt;
   min-width: 8.5in;
@@ -20,12 +18,11 @@ ul {
   flex-direction: column;
   padding: .5in;
   box-sizing: border-box;
+  position: relative;
 }
-
 .full-name, .contact-info {
   align-self: center;
 }
-
 .full-name {
   font-size: 24pt;
   font-weight: 900;
@@ -46,4 +43,11 @@ ul {
   width: 300px;
   height: 250px;
   background-color: red;
+}
+.overlay{
+  position: absolute;
+  width: 500px;
+  height: 200px;
+  background-color: purple;
+  transform: translate(0, 200px);
 }

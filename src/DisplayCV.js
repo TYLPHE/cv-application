@@ -7,6 +7,7 @@ class DisplayCV extends Component {
     super(props);
     this.state = {
       data: null,
+      editor: [],
     }
   }
 
@@ -131,7 +132,14 @@ class DisplayCV extends Component {
 
   handleSkillCallback = (childData) => {
     this.setState({ data: childData });
-    console.log(this.state);
+  }
+
+  insertEdit = (e, boolean) => {
+    // const child = e.props.children
+    // console.log(e)
+    return (
+      <div>{ this.state.editor } test</div>
+    );
   }
 
   render() {
@@ -146,8 +154,11 @@ class DisplayCV extends Component {
       experienceNum,
       educationNum,
     } = this.props;
+
     return (
       <div className="display-cv">
+        <this.insertEdit />
+        {/* <div className="overlay">{ this.state.editor }</div> */}
         <div className="full-name">{this.splitName(name)}</div>
         <div className="contact-info">
           {this.splitPhone(phone)}
@@ -170,7 +181,13 @@ class DisplayCV extends Component {
 
           {this.addHyperlink(linkedin, 'LinkedIn')}
         </div>
-        <Skills skillNum={skillNum} handleSkillCallback={ this.handleSkillCallback }/>
+        
+        <Skills 
+          skillNum={skillNum} 
+          handleSkillCallback={ this.handleSkillCallback } 
+          insertEdit={ this.insertEdit }
+        />
+
         {this.addProjects(projectNum)}
         {this.addExperience(experienceNum)}
         {this.addEducation(educationNum)}
@@ -179,6 +196,5 @@ class DisplayCV extends Component {
   }
 
 }
-
 
 export default DisplayCV;
