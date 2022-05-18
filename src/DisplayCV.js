@@ -1,16 +1,10 @@
 import React, { Component } from "react";
-import './styles/displayCV.css';
 import Skills from "./CVComponents/Skills";
-
+import Projects from "./CVComponents/Projects";
+import Experience from "./CVComponents/Experience";
+import Education from "./CVComponents/Education";
+import './styles/displayCV.css';
 class DisplayCV extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-      editor: [],
-    }
-  }
-
   splitName(str = '') {
     let fullName = str.split(' ');
     if (str && fullName[1]) {
@@ -130,18 +124,6 @@ class DisplayCV extends Component {
     }
   }
 
-  handleSkillCallback = (childData) => {
-    this.setState({ data: childData });
-  }
-
-  insertEdit = (e, boolean) => {
-    // const child = e.props.children
-    // console.log(e)
-    return (
-      <div>{ this.state.editor } test</div>
-    );
-  }
-
   render() {
     const { 
       name, 
@@ -157,8 +139,6 @@ class DisplayCV extends Component {
 
     return (
       <div className="display-cv">
-        <this.insertEdit />
-        {/* <div className="overlay">{ this.state.editor }</div> */}
         <div className="full-name">{this.splitName(name)}</div>
         <div className="contact-info">
           {this.splitPhone(phone)}
@@ -182,15 +162,13 @@ class DisplayCV extends Component {
           {this.addHyperlink(linkedin, 'LinkedIn')}
         </div>
         
-        <Skills 
-          skillNum={skillNum} 
-          handleSkillCallback={ this.handleSkillCallback } 
-          insertEdit={ this.insertEdit }
-        />
-
-        {this.addProjects(projectNum)}
-        {this.addExperience(experienceNum)}
-        {this.addEducation(educationNum)}
+        <Skills skillNum={skillNum} />
+        <Projects projNum={projectNum} />
+        <Experience experienceNum={experienceNum} />
+        <Education educationNum={educationNum} />
+        {/* {this.addProjects(projectNum)} */}
+        {/* {this.addExperience(experienceNum)} */}
+        {/* {this.addEducation(educationNum)} */}
       </div>
     );
   }

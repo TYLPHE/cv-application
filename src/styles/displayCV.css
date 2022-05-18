@@ -8,10 +8,21 @@ h1 {
 ul {
   margin: 0;
 }
+span {
+  cursor: pointer;
+}
+textarea {
+  width: 100%;
+  border: 1px solid black;
+  font-size: 14px;
+  outline: none;
+}
 .display-cv {
   font-size: 12pt;
   min-width: 8.5in;
+  max-width: 8.5in;
   min-height: 11in;
+  max-height: 11in;
   background-color: #fbfbf8;
   border: 1px solid;
   display: flex;
