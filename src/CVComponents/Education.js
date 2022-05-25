@@ -5,73 +5,56 @@ class Education extends Component {
     super(props);
     this.state = {
       edu0: {
-        title: 'Instructional Designer',
-        date: 'insert date',
-        location: 'Insert location',
+        degree: 'The Odin Project Full Stack JavaScript Curriculum',
+        degreeEdit: false,
 
-        point0: 'insert point 1',
-        pointEdit0: false,
+        date: 'Jul 2022',
+        dateEdit: false,
 
-        point1: 'insert point 2',
-        pointEdit1: false,
-
-        point2: 'insert point 3',
-        pointEdit2: false,
+        location: 'Online',
+        locationEdit: false,
       },
-      eduEdit0: false,
 
       edu1: {
-        title: 'Training Specialist',
-        date: 'insert date',
-        location: 'Insert location',
+        degree: 'MBA Human Resource Management',
+        degreeEdit: false,
 
-        point0: 'insert point 1',
-        pointEdit0: false,
+        date: 'Aug 2015',
+        dateEdit: false,
 
-        point1: 'insert point 2',
-        pointEdit1: false,
-
-        point2: 'insert point 3',
-        pointEdit2: false,
+        location: 'University of Aberdeen',
+        locationEdit: false,
       },
-      eduEdit1: false,
 
       edu2: {
-        title: 'Training Specialist',
-        date: 'insert date',
-        location: 'Insert location',
+        degree: 'BS Management',
+        degreeEdit: false,
 
-        point0: 'insert point 1',
-        pointEdit0: false,
+        date: 'May 2011',
+        dateEdit: false,
 
-        point1: 'insert point 2',
-        pointEdit1: false,
-
-        point2: 'insert point 3',
-        pointEdit2: false,
+        location: 'University of Utah',
+        locationEdit: false,
       },
-      eduEdit2: false,
     }
   }
 
   insertEdu = (obj) => {
-    console.log(obj)
     let arr = [];
     let edu;
     for (let i = 0; i < obj.educationNum; i += 1) {
       edu = (
         <div key={`edu${i}`} className={'section'}>
-          <div>{this.state[`edu${i}`].title}</div>
-          <ul>
-            <li key={`edu${i}li${i}`}>{this.state[`edu${i}`].point0}</li>
-            <li key={`edu${i}li${i + 1}`}>{this.state[`edu${i}`].point1}</li>
-            <li key={`edu${i}li${i + 2}`}>{this.state[`edu${i}`].point2}</li>
-          </ul>
+          <div className='job-date'>
+            <span className='bold'>{this.state[`edu${i}`].degree}</span>
+            <span>{this.state[`edu${i}`].date}</span>
+          </div>
+          <div>{this.state[`edu${i}`].location}</div>
         </div>
       );
       arr = [...arr, edu];
     }
-    return arr
+    return arr;
   }
 
   render() {

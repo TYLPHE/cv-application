@@ -7,7 +7,7 @@ class Skills extends Component {
       skill0: 'Programming Languages',
       editSkill0: false,
 
-      desc0: 'React, Javascript, HTML, CSS',
+      desc0: 'React, JavaScript, HTML, CSS',
       editDesc0: false,
 
       skill1: 'Technologies',
@@ -22,8 +22,8 @@ class Skills extends Component {
   handleFocus = (e) => e.target.select();
 
   // update states
-  changeSkill = (e, id) => this.setState({...this.setState, [`skill${id}`]: e.target.value});
-  changeDesc = (e, id) => this.setState({...this.setState, [`desc${id}`]: e.target.value});
+  changeSkill = (e, id) => this.setState({...this.state, [`skill${id}`]: e.target.value});
+  changeDesc = (e, id) => this.setState({...this.state, [`desc${id}`]: e.target.value});
 
 
   // switches between editing <input> and <span>
@@ -58,7 +58,7 @@ class Skills extends Component {
       } else if (this.state[`editDesc${i}`]) {
         skill = (
           <div className="section" key={`editDesc${i}`}>
-            <span className="skill-bold">{ `${this.state[`skill${i}`]}: `}</span>
+            <span className="bold">{ `${this.state[`skill${i}`]}: `}</span>
             <textarea 
               className="input-skill"
               type={'text'}
@@ -75,7 +75,7 @@ class Skills extends Component {
         skill = (
           <div className="section" key={`skillDiv${i}`}>
             <span 
-              className="skill-bold"
+              className="bold"
               onClick={ () => this.toggleEditSkill(i) }
             >
               { `${this.state[`skill${i}`]}: ` }

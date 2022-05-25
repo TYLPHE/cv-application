@@ -166,9 +166,6 @@ class DisplayCV extends Component {
         <Projects projNum={projectNum} />
         <Experience experienceNum={experienceNum} />
         <Education educationNum={educationNum} />
-        {/* {this.addProjects(projectNum)} */}
-        {/* {this.addExperience(experienceNum)} */}
-        {/* {this.addEducation(educationNum)} */}
       </div>
     );
   }

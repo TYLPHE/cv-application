@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       name: 'tyl phe',
       phone: '1231231234',
-      email: 'test@gmail.com',
+      email: 'tylphet@gmail.com',
       github: 'https://github.com/TYLPHE',
       linkedin: 'https://www.linkedin.com/in/tylphe/',
       skillNum: 2,
@@ -19,108 +19,145 @@ class App extends Component {
     }
   }
   
-  changeName = e => this.setState({ ...this.state, name: e.target.value });
-  changePhone = e => this.setState({ ...this.state, phone: e.target.value });
-  changeEmail = e => this.setState({...this.state, email: e.target.value });
-  changeGithub = e => this.setState({ ...this.state, github: e.target.value });
-  changeLinkedin = e => this.setState({ ...this.state, linkedin: e.target.value });
-  changeProjectNum = e => this.setState({ ...this.state, projectNum: e.target.value });
-  changeSkillNum = e => this.setState({ ...this.state, skillNum: e.target.value });
-  changeExperienceNum = e => this.setState({ ...this.state, experienceNum: e.target.value });
-  changeEducationNum = e => this.setState({ ...this.state, educationNum: e.target.value });
-
-  preventDefault(e) {
-    e.preventDefault();
-  }
+  changeName = (e) => this.setState({ ...this.state, name: e.target.value });
+  changePhone = (e) => this.setState({ ...this.state, phone: e.target.value });
+  changeEmail = (e) => this.setState({...this.state, email: e.target.value });
+  changeGithub = (e) => this.setState({ ...this.state, github: e.target.value });
+  changeLinkedin = (e) => this.setState({ ...this.state, linkedin: e.target.value });
+  changeProjectNum = (e) => this.setState({ ...this.state, projectNum: e.target.value });
+  changeSkillNum = (e) => this.setState({ ...this.state, skillNum: e.target.value });
+  changeExperienceNum = (e) => this.setState({ ...this.state, experienceNum: e.target.value });
+  changeEducationNum = (e) => this.setState({ ...this.state, educationNum: e.target.value });
+  preventDefault = (e) => e.preventDefault();
 
   render() {
     return (
       <div className='app'>
         <form onSubmit={this.preventDefault}>
-          <div className='section-title'>Contact Information</div>
-          <label>
-            First & Last Name:
-            <input 
-              type={'text'} 
-              onChange={this.changeName} 
-            />
-          </label>
+          <div>
+            {/* Instructions */}
+            <div className='section-border'>
+              <div className='section-title'>Instructions</div>
+              <ol>
+                <li>Enter information in the form below</li>
+                <li>Click on each section in the resume to edit details</li>
+              </ol>
+            </div>
+          </div>
 
-          <label>
-            Phone Number:
-            <input 
-              type={'tel'}
-              pattern={'[0-9]{3}-[0-9]{3}-[0-9]{4}'}
-              maxLength={10}
-              onChange={this.changePhone} 
-            />
-          </label>
+          {/* Contact Information */}
 
-          <label>
-            Email: 
-            <input
-              type={'email'}
-              onChange={this.changeEmail}
-            />
-          </label>
+          <div className='section-border'>
+            <div className='section-title'>Contact Information</div>
+            <label>
+              First & Last Name
+              <input 
+                type={'text'} 
+                onChange={this.changeName} 
+              />
+            </label>
 
-          <label>
-            GitHub Link: (Must have https://) 
-            <input
-              type={'url'}
-              onChange={this.changeGithub}
-            />
-          </label>
+            <label>
+              Phone Number
+              <input 
+                type={'tel'}
+                pattern={'[0-9]{3}-[0-9]{3}-[0-9]{4}'}
+                maxLength={10}
+                onChange={this.changePhone} 
+              />
+            </label>
 
-          <label>
-            LinkedIn Link: (Must have https://)
-            <input
-              type={'url'}
-              onChange={this.changeLinkedin}
-            />
-          </label>
+            <label>
+              Email
+              <input
+                type={'email'}
+                onChange={this.changeEmail}
+              />
+            </label>
 
-          <div className='section-title'>Skills</div>
-          <label>
-            # of skills: 
-            <select onChange={this.changeSkillNum} defaultValue={2}>
-              <option value={0}>0</option>
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-            </select>
-          </label>
+            <label>
+              GitHub Link (Must have https://)
+              <input
+                type={'url'}
+                onChange={this.changeGithub}
+              />
+            </label>
 
-          <div className='section-title'>Relevant Projects</div>
-          <label>
-            # of Relevant Projects: 
-            <select onChange={this.changeProjectNum} defaultValue={2}>
-              <option value={0}>0</option>
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-            </select>
-          </label>
+            <label>
+              LinkedIn Link (Must have https://)
+              <input
+                type={'url'}
+                onChange={this.changeLinkedin}
+              />
+            </label>
+          </div>
 
-          <div className='section-title'>Relevant Experience</div>
-          <label>
-            # of Relevant Experience: 
-            <select onChange={this.changeExperienceNum} defaultValue={2}>
-              <option value={0}>0</option>
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-            </select>
-          </label>
 
-          <div className='section-title'>Relevant Education</div>
-          <label>
-            # of Relevant Education: 
-            <select onChange={this.changeEducationNum} defaultValue={3}>
-              <option value={0}>0</option>
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-            </select>
-          </label>
+          {/* Skills */}
+          <div className='section-border'>
+            <div className='section-title'>Skills</div>
+            <label>
+              # of skills
+              <select 
+                onChange={this.changeSkillNum} 
+                defaultValue={2}
+              >
+                <option value={0}>0</option>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+              </select>
+            </label>
+          </div>
+
+          {/* Relevant Projects */}
+          <div className='section-border'>
+            <div className='section-title'>Relevant Projects</div>
+            <label>
+              # of Relevant Projects
+              <select 
+                onChange={this.changeProjectNum} 
+                defaultValue={2}
+              >
+                <option value={0}>0</option>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+              </select>
+            </label>
+          </div>
+
+          {/* Relevant Experience */}
+          <div className='section-border'>
+            <div className='section-title'>Relevant Experience</div>
+            <label>
+              # of Relevant Experience
+              <select 
+                onChange={this.changeExperienceNum} 
+                defaultValue={2}
+              >
+                <option value={0}>0</option>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+              </select>
+            </label>
+          </div>
+
+          {/* Relevant Education */}
+          <div className='section-border'>
+            <div className='section-title'>Relevant Education</div>
+            <label>
+              # of Relevant Education
+              <select 
+                onChange={this.changeEducationNum} 
+                defaultValue={3}
+              >
+                <option value={0}>0</option>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+              </select>
+            </label>
+          </div>
         </form>
         <DisplayCV 
           name={this.state.name}

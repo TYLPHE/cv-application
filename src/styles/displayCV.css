@@ -47,18 +47,22 @@ textarea {
 .section {
   padding-bottom: 1rem;
 }
-.skill-bold {
-  font-weight: 900;
-}
-.test{
+.test {
   width: 300px;
   height: 250px;
   background-color: red;
 }
-.overlay{
+.overlay {
   position: absolute;
   width: 500px;
   height: 200px;
   background-color: purple;
   transform: translate(0, 200px);
+}
+.bold {
+  font-weight: 900;
+}
+.job-date {
+  display: flex;
+  justify-content: space-between;
 }

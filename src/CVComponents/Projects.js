@@ -41,7 +41,6 @@ class Projects extends Component {
   changeProj = (e, id) => this.setState({...this.setState, [`proj${id}`]: e.target.value});
   changeDesc = (e, id) => this.setState({...this.setState, [`desc${id}`]: e.target.value});
 
-
   // switches between editing <input> and <span>
   toggleEditProj = (id) => this.setState({...this.state, [`editProj${id}`]: !this.state[`editProj${id}`]});
   toggleEditDesc = (id) => this.setState({...this.state, [`editDesc${id}`]: !this.state[`editDesc${id}`]});
@@ -52,13 +51,12 @@ class Projects extends Component {
   descKey = (e, id) => {if (e.key === 'Enter') this.toggleEditDesc(id)};
   
   insertProj = (obj) => {
-    console.log(obj)
     let arr = [];
     let proj;
     for (let i = 0; i < obj.projNum; i += 1) {
       proj = (
         <div key={`proj${i}`} className={'section'}>
-          <div>{this.state[`proj${i}`].title}</div>
+          <div className='bold'>{this.state[`proj${i}`].title}</div>
           <ul>
             <li key={`proj${i}li${i}`}>{this.state[`proj${i}`].point0}</li>
             <li key={`proj${i}li${i + 1}`}>{this.state[`proj${i}`].point1}</li>
@@ -68,7 +66,7 @@ class Projects extends Component {
       );
       arr = [...arr, proj]
     }
-    return arr
+    return arr;
   }
 
   render() {

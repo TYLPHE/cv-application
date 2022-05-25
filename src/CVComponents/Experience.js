@@ -6,47 +6,82 @@ class Experience extends Component {
     this.state = {
       exp0: {
         title: 'Instructional Designer',
-        date: 'insert date',
-        location: 'Insert location',
+        titleEdit: false,
 
-        point0: 'insert point 1',
+        date: 'Feb 2018 - Dec 2021',
+        dateEdit: false,
+    
+        location: 'Salt Lake City, UT',
+        locationEdit: false,
+
+        point0: 'Collaborated with Epic (hospital charting software) subjet matter experts to implement new workflows of over 1,400 physicians and 5,000 health care professionals',
         pointEdit0: false,
 
-        point1: 'insert point 2',
+        point1: 'Planned, designed, developed, and conducted training and educational programs (in-person and online) for an external hospital',
         pointEdit1: false,
 
-        point2: 'insert point 3',
+        point2: 'Delivered instruction to individuals and groups in a variety of formats, including printed and pre-recorded/live video media.',
         pointEdit2: false,
       },
-      expEdit0: false,
 
       exp1: {
         title: 'Training Specialist',
-        date: 'insert date',
-        location: 'Insert location',
+        titleEdit: false,
 
-        point0: 'insert point 1',
+        date: 'Dec 2015 - Feb 2018',
+        dateEdit: false,
+
+        location: 'Salt Lake City, UT',
+        locationEdit: false, 
+
+        point0: 'Provided technical support to providers, nurses, analysts, informaticists, and clinic managers in areas including error diagnosis, proper charting, and creating various tip sheets',
         pointEdit0: false,
 
-        point1: 'insert point 2',
+        point1: 'Trained 21 different classes of 1 - 20 hospital employees throughout various Epic applications on a weekly basis',
         pointEdit1: false,
 
-        point2: 'insert point 3',
+        point2: 'Maintained records of training activities using an online learning management system',
         pointEdit2: false,
       },
-      expEdit1: false,
-
     }
   }
 
+  //TODO: fix setstate here
+  toggleEdit = (expName, editName) => {
+    console.log(expName, editName)
+    console.log(this.state[expName][editName])
+    this.setState({...this.state, [editName]: !this.state[expName][editName]})
+  }
+
   insertExp = (obj) => {
-    console.log(obj)
     let arr = [];
     let exp;
+
+    // convert obj to arr
+    const testArr = Object.entries(this.state['exp0']);
+    
+    // find any edits that equal true and update user interface
+    const newArr = testArr.filter(( [key ,value] ) => value === true);
+    console.log(newArr)
+
     for (let i = 0; i < obj.experienceNum; i += 1) {
       exp = (
         <div key={`exp${i}`} className={'section'}>
-          <div>{this.state[`exp${i}`].title}</div>
+          <div>
+            <div className='job-date'>
+              <span 
+                className='bold' 
+                onClick={ () => this.toggleEdit(`exp${i}`, 'titleEdit')}
+              >
+                {this.state[`exp${i}`].title}
+              </span>
+              <span>{this.state[`exp${i}`].date}</span>
+            </div>
+            <div>{this.state[`exp${i}`].location}</div>
+          </div>
+          <div>
+
+          </div>
           <ul>
             <li key={`exp${i}li${i}`}>{this.state[`exp${i}`].point0}</li>
             <li key={`exp${i}li${i + 1}`}>{this.state[`exp${i}`].point1}</li>
@@ -56,7 +91,7 @@ class Experience extends Component {
       );
       arr = [...arr, exp];
     }
-    return arr
+    return arr;
   }
 
   render() {
