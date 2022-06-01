@@ -11,6 +11,9 @@ ul {
 span {
   cursor: pointer;
 }
+span:hover {
+  background-color: #e0941b3f;
+}
 textarea {
   width: 100%;
   border: 1px solid black;

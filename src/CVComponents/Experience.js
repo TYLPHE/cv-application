@@ -46,49 +46,85 @@ class Experience extends Component {
     }
   }
 
-  //TODO: fix setstate here
+  // toggles edit fields between true and false
   toggleEdit = (expName, editName) => {
-    console.log(expName, editName)
-    console.log(this.state[expName][editName])
-    this.setState({...this.state, [editName]: !this.state[expName][editName]})
+    this.setState((state) => {
+      return {
+        [expName]: {
+          [editName]: !state[expName][editName],
+        }
+      };
+    });
   }
 
   insertExp = (obj) => {
+    // convert obj to arr
+    const stateArr = Object.entries(this.state)
+
+    // search this.state for anything marked for editing
+    let edit = [];
+    for (let i = 0; i < stateArr.length; i += 1) {
+      const arr = Object.entries(this.state[`exp${i}`]);
+      arr.filter((e) => {
+        const [key, value] = e;
+        if (value === true) {
+          return edit.push(key); 
+        } else {
+          return false;
+        }
+      });
+    }
+    console.log(edit)
+
     let arr = [];
     let exp;
-
-    // convert obj to arr
-    const testArr = Object.entries(this.state['exp0']);
-    
-    // find any edits that equal true and update user interface
-    const newArr = testArr.filter(( [key ,value] ) => value === true);
-    console.log(newArr)
-
     for (let i = 0; i < obj.experienceNum; i += 1) {
-      exp = (
-        <div key={`exp${i}`} className={'section'}>
-          <div>
-            <div className='job-date'>
-              <span 
-                className='bold' 
-                onClick={ () => this.toggleEdit(`exp${i}`, 'titleEdit')}
-              >
-                {this.state[`exp${i}`].title}
-              </span>
-              <span>{this.state[`exp${i}`].date}</span>
+      if (edit.length > 0) {
+        console.log('something to edit');
+        exp = (
+          <div key={`exp${i}`} className={'section'}>
+            <div>
+              <div className='job-date'>
+                <span 
+                  className='bold' 
+                  onClick={ () => this.toggleEdit(`exp${i}`, 'titleEdit')}
+                >
+                  {this.state[`exp${i}`].title}
+                </span>
+                <span>{this.state[`exp${i}`].date}</span>
+              </div>
+              <div>{this.state[`exp${i}`].location}</div>
             </div>
-            <div>{this.state[`exp${i}`].location}</div>
+            <ul>
+              <li key={`exp${i}li${i}`}>{this.state[`exp${i}`].point0}</li>
+              <li key={`exp${i}li${i + 1}`}>{this.state[`exp${i}`].point1}</li>
+              <li key={`exp${i}li${i + 2}`}>{this.state[`exp${i}`].point2}</li>
+            </ul>
           </div>
-          <div>
-
+        );
+      } else {
+        exp = (
+          <div key={`exp${i}`} className={'section'}>
+            <div>
+              <div className='job-date'>
+                <span 
+                  className='bold' 
+                  onClick={ () => this.toggleEdit(`exp${i}`, 'titleEdit')}
+                >
+                  {this.state[`exp${i}`].title}
+                </span>
+                <span>{this.state[`exp${i}`].date}</span>
+              </div>
+              <div>{this.state[`exp${i}`].location}</div>
+            </div>
+            <ul>
+              <li key={`exp${i}li${i}`}>{this.state[`exp${i}`].point0}</li>
+              <li key={`exp${i}li${i + 1}`}>{this.state[`exp${i}`].point1}</li>
+              <li key={`exp${i}li${i + 2}`}>{this.state[`exp${i}`].point2}</li>
+            </ul>
           </div>
-          <ul>
-            <li key={`exp${i}li${i}`}>{this.state[`exp${i}`].point0}</li>
-            <li key={`exp${i}li${i + 1}`}>{this.state[`exp${i}`].point1}</li>
-            <li key={`exp${i}li${i + 2}`}>{this.state[`exp${i}`].point2}</li>
-          </ul>
-        </div>
-      );
+        );
+      }
       arr = [...arr, exp];
     }
     return arr;

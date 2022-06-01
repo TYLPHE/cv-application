@@ -104,7 +104,7 @@ class DisplayCV extends Component {
       for (let i = 1; i <= num; i += 1) {
         let div = (
           <div key={`edu-${i}`} className={'section'}>
-            <div className="skill-bold">{`Education #${i}`}</div>
+            <div className="bold">{`Education #${i}`}</div>
             <div>Location</div>
           </div>
         );

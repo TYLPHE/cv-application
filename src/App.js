@@ -18,22 +18,17 @@ class App extends Component {
       educationNum: 3,
     }
   }
-  
-  changeName = (e) => this.setState({ ...this.state, name: e.target.value });
-  changePhone = (e) => this.setState({ ...this.state, phone: e.target.value });
-  changeEmail = (e) => this.setState({...this.state, email: e.target.value });
-  changeGithub = (e) => this.setState({ ...this.state, github: e.target.value });
-  changeLinkedin = (e) => this.setState({ ...this.state, linkedin: e.target.value });
-  changeProjectNum = (e) => this.setState({ ...this.state, projectNum: e.target.value });
-  changeSkillNum = (e) => this.setState({ ...this.state, skillNum: e.target.value });
-  changeExperienceNum = (e) => this.setState({ ...this.state, experienceNum: e.target.value });
-  changeEducationNum = (e) => this.setState({ ...this.state, educationNum: e.target.value });
-  preventDefault = (e) => e.preventDefault();
+
+  updateState = (e, key) => {
+    this.setState(state => {
+      return { ...state, [key]: e.target.value}
+    });
+  }
 
   render() {
     return (
       <div className='app'>
-        <form onSubmit={this.preventDefault}>
+        <form>
           <div>
             {/* Instructions */}
             <div className='section-border'>
@@ -53,7 +48,8 @@ class App extends Component {
               First & Last Name
               <input 
                 type={'text'} 
-                onChange={this.changeName} 
+                // onChange={this.changeName} 
+                onChange={(e) => this.updateState(e, 'name')}
               />
             </label>
 
@@ -63,7 +59,7 @@ class App extends Component {
                 type={'tel'}
                 pattern={'[0-9]{3}-[0-9]{3}-[0-9]{4}'}
                 maxLength={10}
-                onChange={this.changePhone} 
+                onChange={(e) => this.updateState(e, 'phone')} 
               />
             </label>
 
@@ -71,7 +67,7 @@ class App extends Component {
               Email
               <input
                 type={'email'}
-                onChange={this.changeEmail}
+                onChange={(e) => this.updateState(e, 'email')}
               />
             </label>
 
@@ -79,7 +75,7 @@ class App extends Component {
               GitHub Link (Must have https://)
               <input
                 type={'url'}
-                onChange={this.changeGithub}
+                onChange={(e) => this.updateState(e, 'github')}
               />
             </label>
 
@@ -87,7 +83,7 @@ class App extends Component {
               LinkedIn Link (Must have https://)
               <input
                 type={'url'}
-                onChange={this.changeLinkedin}
+                onChange={(e) => this.updateState(e, 'linkedin')}
               />
             </label>
           </div>
@@ -99,7 +95,7 @@ class App extends Component {
             <label>
               # of skills
               <select 
-                onChange={this.changeSkillNum} 
+                onChange={(e) => this.updateState(e, 'skillNum')} 
                 defaultValue={2}
               >
                 <option value={0}>0</option>
@@ -115,7 +111,7 @@ class App extends Component {
             <label>
               # of Relevant Projects
               <select 
-                onChange={this.changeProjectNum} 
+                onChange={(e) => this.updateState(e, 'projectNum')} 
                 defaultValue={2}
               >
                 <option value={0}>0</option>
@@ -131,7 +127,7 @@ class App extends Component {
             <label>
               # of Relevant Experience
               <select 
-                onChange={this.changeExperienceNum} 
+                onChange={(e) => this.updateState(e, 'experienceNum')} 
                 defaultValue={2}
               >
                 <option value={0}>0</option>
@@ -148,7 +144,7 @@ class App extends Component {
             <label>
               # of Relevant Education
               <select 
-                onChange={this.changeEducationNum} 
+                onChange={(e) => this.updateState(e, 'educationNum')} 
                 defaultValue={3}
               >
                 <option value={0}>0</option>

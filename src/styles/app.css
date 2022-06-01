@@ -38,6 +38,7 @@ ol {
   display: flex;
   gap: 5px;
   padding-top: 5px;
+  justify-content: center;
 }
 .section-border {
   border-bottom: 1px solid #00000063;
