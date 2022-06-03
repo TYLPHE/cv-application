@@ -4,6 +4,7 @@ import Projects from "./CVComponents/Projects";
 import Experience from "./CVComponents/Experience";
 import Education from "./CVComponents/Education";
 import './styles/displayCV.css';
+
 class DisplayCV extends Component {
   splitName(str = '') {
     let fullName = str.split(' ');

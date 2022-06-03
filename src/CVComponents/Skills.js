@@ -17,10 +17,7 @@ class Skills extends Component {
       editDesc1: false,
     }
   }
-
-  // highlights text in input field
-  handleFocus = (e) => e.target.select();
-
+  
   // update states
   changeSkill = (e, id) => this.setState({...this.state, [`skill${id}`]: e.target.value});
   changeDesc = (e, id) => this.setState({...this.state, [`desc${id}`]: e.target.value});
@@ -42,14 +39,15 @@ class Skills extends Component {
       if (this.state[`editSkill${i}`]) {
         skill = (
           <div className="section" key={`editInput${i}`}>
-            <textarea 
-              className="input-skill"
+            <input 
+              className="cv-input"
               type={'text'}
               defaultValue={this.state[`skill${i}`]}
               onChange={(e) => this.changeSkill(e, i)}
-              onFocus={this.handleFocus}
               onBlur={() => this.toggleEditSkill(i)}
               onKeyDown={(e) => this.editKey(e, i)}
+              style={{width: `${this.state[`skill${i}`].length}ch`}}
+              onFocus={(e) => e.target.select()}
               autoFocus
             />
             <span key={`spandesc${i}`}>{ this.state[`desc${i}`] }</span>
@@ -59,14 +57,14 @@ class Skills extends Component {
         skill = (
           <div className="section" key={`editDesc${i}`}>
             <span className="bold">{ `${this.state[`skill${i}`]}: `}</span>
-            <textarea 
-              className="input-skill"
+            <input 
+              className="cv-input"
               type={'text'}
               defaultValue={this.state[`desc${i}`]}
               onChange={(e) => this.changeDesc(e, i)}
-              onFocus={this.handleFocus}
               onBlur={() => this.toggleEditDesc(i)}
               onKeyDown={(e) => this.descKey(e, i)}
+              onFocus={(e) => e.target.select()}
               autoFocus
             />
           </div>

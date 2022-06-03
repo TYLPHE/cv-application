@@ -54,6 +54,13 @@ this.setState((state) => {
 ```
 What a breakthrough! This type of destructuring makes states extremely flexible for me!
 
+UPDATE: After more coding, I learned that the previous code block changed my whole state. I am going to try for this type of code for state updates:
+```
+const newState = Object.assign({}, this.state);
+newState[expName][editName] = !newState[expName][editName];
+this.setState(newState);
+```
+
 ### Destructuring this.state - Is this also legal?
 Based on the challenge above, I was able to update a deeply nested state like this:
 ```
