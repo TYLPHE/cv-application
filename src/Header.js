@@ -1,7 +1,7 @@
 function Header() {
   return (
     <header>
-      CV Application by Tylphe
+      CV Application by TYLPHE
     </header>
   );
 }

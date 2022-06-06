@@ -17,12 +17,13 @@ class App extends Component {
       experienceNum: 2,
       educationNum: 3,
     }
-  }
 
+  }
+  
   updateState = (e, key) => {
-    this.setState(state => {
-      return { ...state, [key]: e.target.value}
-    });
+    const newState = Object.assign({}, this.state);
+    newState[key] = e.target.value;
+    this.setState(newState);
   }
 
   render() {
@@ -36,19 +37,18 @@ class App extends Component {
               <ol>
                 <li>Enter information in the form below</li>
                 <li>Click on each section in the resume to edit details</li>
+                <li>Click Print/Save</li>
               </ol>
             </div>
           </div>
 
           {/* Contact Information */}
-
           <div className='section-border'>
             <div className='section-title'>Contact Information</div>
             <label>
               First & Last Name
               <input 
                 type={'text'} 
-                // onChange={this.changeName} 
                 onChange={(e) => this.updateState(e, 'name')}
               />
             </label>
@@ -153,6 +153,16 @@ class App extends Component {
                 <option value={3}>3</option>
               </select>
             </label>
+          </div>
+
+          {/* print CV */}
+          <div className='button-cont'>
+            <button onClick={(e) => {
+              e.preventDefault();
+              window.print();
+            }}>
+              Print/Save CV
+            </button>
           </div>
         </form>
         <DisplayCV 

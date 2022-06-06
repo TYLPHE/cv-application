@@ -13,6 +13,7 @@ class DisplayCV extends Component {
     }
   }
 
+  // formats phone number to readable format
   splitPhone(str = '') {
     if(str.length === 10) {
       return (
@@ -23,6 +24,7 @@ class DisplayCV extends Component {
     }
   }
 
+  // adds '|' between contents under the name
   splitter(info1, info2){
     if (info1 && info2) {
       return ` | `;
@@ -34,92 +36,6 @@ class DisplayCV extends Component {
       return (
         <div>
           <a href={hyperlink} target='_blank' rel="noreferrer">{str}</a>
-        </div>
-      );
-    }
-  }
-
-  addProjects(num) {
-    function projDiv(num) {
-      let push = [];
-      for(let i = 1; i <= num; i += 1) {
-        let div = (
-          <div key={`proj-${i}`} className={'section'}>
-            <div>{`Project #${i}`}</div>
-            <ul>
-              <li>point 1</li>
-              <li>point 2</li>
-              <li>point 3</li>
-            </ul>
-          </div>
-        )
-        push = [...push, div];
-      }
-      return push;
-    }
-
-    let returnValue = <div>{projDiv(num)}</div>
-    if (num > 0) {
-      return (
-        <div>
-          <h1>Projects</h1>
-          {returnValue}
-        </div>
-      )
-    }
-  }
-
-  addExperience(num) {
-    function expDiv(num) {
-      let push = [];
-      for (let i = 1; i <= num; i += 1) {
-        let div = (
-          <div key={`exp-${i}`} className={'section'}>
-            <div>{`Job #${i}`}</div>
-            <ul>
-              <li>point 1</li>
-              <li>point 2</li>
-              <li>point 3</li>
-            </ul>
-          </div>
-        );
-        push = [...push, div];
-      }
-      return push;
-    }
-
-    let returnValue = <div>{expDiv(num)}</div>
-    if (num > 0) {
-      return (
-        <div>
-          <h1>Relevant Experience</h1>
-          {returnValue}
-        </div>
-      );
-    }
-  }
-
-  addEducation(num) {
-    function eduDiv(num) {
-      let push = [];
-      for (let i = 1; i <= num; i += 1) {
-        let div = (
-          <div key={`edu-${i}`} className={'section'}>
-            <div className="bold">{`Education #${i}`}</div>
-            <div>Location</div>
-          </div>
-        );
-        push = [...push, div];
-      }
-      return push;
-    }
-
-    let returnValue = <div>{eduDiv(num)}</div>
-    if (num > 0) {
-      return (
-        <div>
-          <h1>Education</h1>
-          {returnValue}
         </div>
       );
     }
@@ -140,7 +56,7 @@ class DisplayCV extends Component {
 
     return (
       <div className="display-cv">
-        <div className="full-name">{this.splitName(name)}</div>
+        <div className="full-name capitalize">{this.splitName(name)}</div>
         <div className="contact-info">
           {this.splitPhone(phone)}
 
@@ -170,7 +86,6 @@ class DisplayCV extends Component {
       </div>
     );
   }
-
 }
 
 export default DisplayCV;

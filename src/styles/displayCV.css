@@ -45,7 +45,6 @@ textarea {
 .full-name {
   font-size: 24pt;
   font-weight: 900;
-  text-transform: capitalize;
 }
 .contact-info {
   display: flex;

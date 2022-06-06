@@ -10,7 +10,7 @@
 
 ## Features
 - Create a simple CV by using the form on the left
-- Click each section to edit the text (work in progress)
+- Click each section to edit the text
 - Create a PDF to send to your next job today! (work in progress)
 
 ## About

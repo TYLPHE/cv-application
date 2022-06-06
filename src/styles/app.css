@@ -16,12 +16,10 @@ header {
   color: white;
   background-color: #095194;
 }
-
 form {
   background-color: #dbdbdb;
   color: rgb(32, 32, 32);
 }
-
 label {
   display: flex;
   flex-direction: column;
@@ -33,6 +31,26 @@ input, select {
 ol {
   margin: 0;
   padding: 0 1rem;
+}
+button {
+  width: 80%;
+  background-color: #095194;
+  color: white;
+  font-weight: 900;
+  height: 3rem;
+  cursor: pointer;
+  font-size: 14pt;
+}
+@media print {
+  header, footer, form {
+    display: none;
+  }
+  .display-cv {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: none;
+  }
 }
 .app {
   display: flex;
@@ -47,4 +65,10 @@ ol {
 .section-title {
   font-weight: 900;
   color: #945C00;
+}
+.button-cont {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
 }

@@ -120,11 +120,44 @@ class Education extends Component {
     for (let i = 0; i < obj.educationNum; i += 1) {
       edu = (
         <div key={`edu${i}`} className={'section'}>
-          <div className='job-date space-between'>
-            <span className='bold'>{this.state[`edu${i}`].degree}</span>
-            <span>{this.state[`edu${i}`].date}</span>
+          {/* title and date section */}
+          <div className='space-between'>
+            <span
+              className='bold capitalize'
+              onClick={() => this.toggleEdit(`edu${i}`, 'degreeEdit')}  
+            >
+              {this.insertEdit(
+                `edu${i}`,
+                'degree',
+                edit,
+                'degreeEdit',
+                'input'
+              )}
+            </span>
+            <span
+              className='capitalize'
+              onClick={() => this.toggleEdit(`edu${i}`, 'dateEdit')}  
+            >
+              {this.insertEdit(
+                `edu${i}`,
+                'date',
+                edit,
+                'dateEdit',
+                'input'
+              )}
+            </span>
           </div>
-          <div>{this.state[`edu${i}`].location}</div>
+          <span
+            onClick={() => this.toggleEdit(`edu${i}`, 'locationEdit')}
+          >
+            {this.insertEdit(
+              `edu${i}`,
+              'location',
+              edit,
+              'locationEdit',
+              'input'
+            )}
+          </span>
         </div>
       );
       arr = [...arr, edu];
