@@ -1,9 +1,17 @@
 import React, { Component } from "react";
-import Skills from "./CVComponents/Skills";
-import Projects from "./CVComponents/Projects";
-import Experience from "./CVComponents/Experience";
-import Education from "./CVComponents/Education";
 import './styles/displayCV.css';
+
+// class-based components
+// import Skills from "./CVComponents/SkillsClass";
+// import Projects from "./CVComponents/ProjectsClass";
+// import Experience from "./CVComponents/ExperienceClass";
+// import Education from "./CVComponents/EducationClass";
+
+// functional-based compoenents
+import Skills from "./CVComponents/SkillsFunction";
+import Projects from "./CVComponents/ProjectsFunction";
+import Experience from "./CVComponents/ExperienceFunction";
+import Education from "./CVComponents/EducationFunction";
 
 class DisplayCV extends Component {
   splitName(str = '') {

@@ -5,7 +5,6 @@ import './styles/app.css';
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       name: 'tyl phe',
       phone: '1231231234',
@@ -17,7 +16,6 @@ class App extends Component {
       experienceNum: 2,
       educationNum: 3,
     }
-
   }
   
   updateState = (e, key) => {
@@ -37,7 +35,7 @@ class App extends Component {
               <ol>
                 <li>Enter information in the form below</li>
                 <li>Click on each section in the resume to edit details</li>
-                <li>Click Print/Save</li>
+                <li>Click Print/Save to PDF</li>
               </ol>
             </div>
           </div>
@@ -161,7 +159,7 @@ class App extends Component {
               e.preventDefault();
               window.print();
             }}>
-              Print/Save CV
+              Print/Save to PDF
             </button>
           </div>
         </form>

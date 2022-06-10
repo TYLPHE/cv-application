@@ -10,7 +10,6 @@
 header, form {
   border: 1px solid gray;
 }
-
 header {
   font-size: larger;
   color: white;
@@ -40,6 +39,9 @@ button {
   height: 3rem;
   cursor: pointer;
   font-size: 14pt;
+}
+button:hover {
+  background-color: #389FFF;
 }
 @media print {
   header, footer, form {

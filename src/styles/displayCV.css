@@ -82,3 +82,6 @@ textarea {
 .capitalize {
   text-transform: capitalize;
 }
+.inline {
+  display: inline;
+}
