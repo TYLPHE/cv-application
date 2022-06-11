@@ -7,7 +7,7 @@ import './styles/displayCV.css';
 // import Experience from "./CVComponents/ExperienceClass";
 // import Education from "./CVComponents/EducationClass";
 
-// functional-based compoenents
+// functional-based components
 import Skills from "./CVComponents/SkillsFunction";
 import Projects from "./CVComponents/ProjectsFunction";
 import Experience from "./CVComponents/ExperienceFunction";
@@ -88,7 +88,7 @@ class DisplayCV extends Component {
         </div>
         
         <Skills skillNum={skillNum} />
-        <Projects projNum={projectNum} />
+        <Projects projectNum={projectNum} />
         <Experience experienceNum={experienceNum} />
         <Education educationNum={educationNum} />
       </div>
