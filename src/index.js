@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
-import App from './AppFunction';
 import Header from './Header';
+// switch in the other App import to test class components
+// import App from './AppClass'
+import App from './AppFunction';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

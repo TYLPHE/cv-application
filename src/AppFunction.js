@@ -11,7 +11,7 @@ function App() {
   const [skillNum, setSkillNum] = useState(2);
   const [projectNum, setProjectNum] = useState(2);
   const [experienceNum, setExperienceNum] = useState(2);
-  const [educationNum, setEducationNum] = useState(2);
+  const [educationNum, setEducationNum] = useState(3);
 
   const handleName = (e) => setName(e.target.value);
   const handlePhone = (e) => setPhone(e.target.value);

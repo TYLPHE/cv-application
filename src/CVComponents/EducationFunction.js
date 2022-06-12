@@ -1,180 +1,119 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
+import { InsertEdit,  toggleEdit } from './_helper'
 
-class Education extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      edu0: {
-        degree: 'The Odin Project Full Stack JavaScript Curriculum',
-        degreeEdit: false,
+function Education(props) {
+  // education0 initial states
+  const [edu0Degree, setEdu0Degree] = useState({
+    value: 'The Odin Project Full Stack JavaScript Curriculum',
+    edit: false,
+  });
+  const [edu0Date, setEdu0Date] = useState({
+    value: 'Jul 2022',
+    edit: false,
+  });
+  const [edu0Location, setEdu0Location] = useState({
+    value: 'Online',
+    edit: false,
+  });
 
-        date: 'Jul 2022',
-        dateEdit: false,
+  // education1 initial states
+  const [edu1Degree, setEdu1Degree] = useState({
+    value: 'MBA Human Resource Management',
+    edit: false,
+  });
+  const [edu1Date, setEdu1Date] = useState({
+    value: 'Aug 2015',
+    edit: false,
+  });
+  const [edu1Location, setEdu1Location] = useState({
+    value: 'University of Aberdeen',
+    edit: false,
+  });
 
-        location: 'Online',
-        locationEdit: false,
-      },
+  // education2 initial states
+  const [edu2Degree, setEdu2Degree] = useState({
+    value: 'BS Management',
+    edit: false,
+  });
+  const [edu2Date, setEdu2Date] = useState({
+    value: 'May 2011',
+    edit: false,
+  });
+  const [edu2Location, setEdu2Location] = useState({
+    value: 'University of Utah',
+    edit: false,
+  });
 
-      edu1: {
-        degree: 'MBA Human Resource Management',
-        degreeEdit: false,
-
-        date: 'Aug 2015',
-        dateEdit: false,
-
-        location: 'University of Aberdeen',
-        locationEdit: false,
-      },
-
-      edu2: {
-        degree: 'BS Management',
-        degreeEdit: false,
-
-        date: 'May 2011',
-        dateEdit: false,
-
-        location: 'University of Utah',
-        locationEdit: false,
-      },
-    }
-  }
-
-  // updates state to target value
-  updateState = (e, objNum, key) => {
-    const newState = Object.assign({}, this.state);
-    newState[objNum][key] = e.target.value;
-    this.setState(newState);
-  }
-
-  // toggles edit fields between true and false
-  toggleEdit = (objNum, editName) => {
-    const newState = Object.assign({}, this.state);
-    newState[objNum][editName] = !newState[objNum][editName];
-    this.setState(newState);
-  }
-
-  // inserts an input field when edit state is true
-  insertEdit = (section, key, edit, editMatch, inputType) => {
-    const [sectionMatch, editKey] = edit;
-    if (sectionMatch === section && editKey === editMatch) {
-      if (inputType === 'input') {
-        return (
-          <input
-            className="cv-input"
-            type={'text'}
-            defaultValue={this.state[sectionMatch][key]}
-            onChange={(e) => this.updateState(e, sectionMatch, key)}
-            onBlur={() => this.toggleEdit(sectionMatch, editKey)}
-            onKeyDown={(e) => this.enterHotkey(e, sectionMatch, editKey)}
-            style={{width: `${this.state[sectionMatch][key].length}ch`}}
-            onFocus={(e) => e.target.select()}
-            autoFocus
-          />
-        )
-      }
-      
-      else if (inputType === 'textarea') {
-        return (
-          <textarea
-            className="cv-textarea"
-            type={'text'}
-            defaultValue={this.state[sectionMatch][key]}
-            onChange={(e) => this.updateState(e, sectionMatch, key)}
-            onBlur={() => this.toggleEdit(sectionMatch, editKey)}
-            onKeyDown={(e) => this.enterHotkey(e, sectionMatch, editKey)}
-            onFocus={(e) => e.target.select()}
-            autoFocus
-          />
-        )
-      }
-    } else return this.state[section][key];
-  }
-
-  // user can press 'Enter' key to exit editing mode
-  enterHotkey = (e, objNum, editName) => {
-    if (e.key === 'Enter') {
-      this.toggleEdit(objNum, editName)
-    }
-  }
-
-  insertEdu = (obj) => {
-    // convert obj to arr to filter for edit values with true
-    const stateArr = Object.entries(this.state)
-
-    // search this.state for anything marked for editing. Used below.
-    const edit = [];
-    for (let i = 0; i < stateArr.length; i += 1) {
-      const arr = Object.entries(this.state[`edu${i}`]);
-      arr.filter((e) => {
-        const [key, value] = e;
-        if (value === true) {
-          return edit.push(`edu${i}`, key); 
-        } else {
-          return false;
-        }
-      });
-    }
+  // place states into arr to iterate with for-loops
+  const eduDegreeArr = [edu0Degree, edu1Degree, edu2Degree];
+  const setEduDegreeArr = [setEdu0Degree, setEdu1Degree, setEdu2Degree];
+  const eduDateArr = [edu0Date, edu1Date, edu2Date];
+  const setEduDateArr = [setEdu0Date, setEdu1Date, setEdu2Date];
+  const eduLocationArr = [edu0Location, edu1Location, edu2Location];
+  const setEduLocationArr = [setEdu0Location, setEdu1Location, setEdu2Location];
   
-    let arr = [];
-    let edu;
-    for (let i = 0; i < obj.educationNum; i += 1) {
-      edu = (
-        <div key={`edu${i}`} className={'section'}>
-          {/* title and date section */}
-          <div className='space-between'>
+  function InsertEdu() {
+    const arr = [];
+    for (let i = 0; i < props.educationNum; i += 1) {
+      const edu = (
+        <div
+          key={`edu${i}`}
+          className={'section'}
+        >
+          {/* degree and date section */}
+          <div
+            className={'space-between'}
+          >
+            {/* degree */}
             <span
               className='bold capitalize'
-              onClick={() => this.toggleEdit(`edu${i}`, 'degreeEdit')}  
+              onClick={() => toggleEdit(setEduDegreeArr[i])}
             >
-              {this.insertEdit(
-                `edu${i}`,
-                'degree',
-                edit,
-                'degreeEdit',
-                'input'
+              {InsertEdit(
+                eduDegreeArr[i].edit,
+                eduDegreeArr[i].value,
+                'input',
+                setEduDegreeArr[i],
               )}
             </span>
+            {/* date */}
             <span
               className='capitalize'
-              onClick={() => this.toggleEdit(`edu${i}`, 'dateEdit')}  
+              onClick={() => toggleEdit(setEduDateArr[i])}
             >
-              {this.insertEdit(
-                `edu${i}`,
-                'date',
-                edit,
-                'dateEdit',
-                'input'
+              {InsertEdit(
+                eduDateArr[i].edit,
+                eduDateArr[i].value,
+                'input',
+                setEduDateArr[i]
               )}
             </span>
           </div>
-          <span
-            onClick={() => this.toggleEdit(`edu${i}`, 'locationEdit')}
+          {/* location */}
+          <div
+            onClick={() => toggleEdit(setEduLocationArr[i])}
           >
-            {this.insertEdit(
-              `edu${i}`,
-              'location',
-              edit,
-              'locationEdit',
-              'input'
+            {InsertEdit(
+              eduLocationArr[i].edit,
+              eduLocationArr[i].value,
+              'input',
+              setEduLocationArr[i],
             )}
-          </span>
+          </div>
         </div>
-      );
-      arr = [...arr, edu];
+      )
+      arr.push(edu);
     }
-    return arr;
+    return arr; 
   }
 
-  render() {
-    const { educationNum } = this.props;
-    if (educationNum > 0) {
-      return (
-        <div>
-          <h1>Education</h1>
-          <this.insertEdu educationNum={educationNum} /> 
-        </div>
-      );
-    }
+  if (props.educationNum > 0) {
+    return (
+      <div>
+        <h1>Education</h1>
+        <InsertEdu />
+      </div>
+    );
   }
 }
 
