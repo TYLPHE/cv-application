@@ -158,7 +158,7 @@ function Experience(props) {
             </span>
           </div>
           {/* location */}
-          <div
+          <span
             className='capitalize'
             onClick={() => toggleEdit(setExpLocationArr[i])}
           >
@@ -168,7 +168,7 @@ function Experience(props) {
               'input',
               setExpLocationArr[i],
             )}
-          </div>
+          </span>
           {/* list of experiences */}
           <ul>
             <Li expNum={i} />

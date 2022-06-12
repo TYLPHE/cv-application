@@ -60,7 +60,7 @@ function Projects(props) {
           {InsertEdit(
             projPointArr[titleNum][i].edit,
             projPointArr[titleNum][i].value,
-            'input',
+            'textarea',
             setProjPointArr[titleNum][i],
           )}
         </li>

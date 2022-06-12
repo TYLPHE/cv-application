@@ -90,7 +90,7 @@ function Education(props) {
             </span>
           </div>
           {/* location */}
-          <div
+          <span
             onClick={() => toggleEdit(setEduLocationArr[i])}
           >
             {InsertEdit(
@@ -99,7 +99,7 @@ function Education(props) {
               'input',
               setEduLocationArr[i],
             )}
-          </div>
+          </span>
         </div>
       )
       arr.push(edu);
