@@ -36,6 +36,7 @@ this.state = {
 
 Then, I used an if-statement to read the `skillEdit` key to generate the input field.
 
+
 ### Destructuring this.state - Is this also legal?
 I wonder if the following is also legal. It seems to work just fine:
 `this.setState({...this.state, exp0: {title: !this.state.exp0.title}})`
@@ -45,3 +46,29 @@ I wonder if this is better or worse than the updater function in the code block 
 After further investigation, I found [this explanation](https://stackoverflow.com/questions/55342406/updating-and-merging-state-object-using-react-usestate-hook).
 
 For the purpose of this project, using the destructured object in setState would still work. However, if I were to use the destructured object twice in a row, then I would run into problems.
+
+### Converting all class components to funciton components
+My class components are states with deeply nested objects. In order to update specific sections of the state object, I had to copy the previous object, make changes to it, and then `setState()` the new object like this:
+```
+  updateState = (e, objNum, key) => {
+    const newState = Object.assign({}, this.state);
+    newState[objNum][key] = e.target.value;
+    this.setState(newState);
+  }
+```
+
+For function components, I decided to pair each state with its edit state. For example:
+```
+const [skill0, setSkill0] = useState({
+  value: 'Programming Languages',
+  edit: false,
+});
+```
+
+In order to iterate through all of these value/edit states, I placed all of these states into different arrays. for example, all the state variables are in one array, and all the set state variables are in another. For example:
+```
+const skillArr = [skill0, skill1];
+const setSkillArr = [setSkill0, setSkill1];
+const descArr = [desc0, desc1];
+const setDescArr = [desc0Edit, desc1Edit];
+```
