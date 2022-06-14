@@ -44,13 +44,16 @@ button:hover {
   background-color: #389FFF;
 }
 @media print {
+  @page { margin: 0; }
+  body { margin: 1.6cm; }
   header, footer, form {
     display: none;
   }
   .display-cv {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 50%;
+    top: 0%;
+    transform: translate(-50%, -0%);
     border: none;
   }
 }
