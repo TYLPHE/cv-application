@@ -39,7 +39,9 @@ Then, I used an if-statement to read the `skillEdit` key to generate the input f
 
 ### Destructuring this.state - Is this also legal?
 I wonder if the following is also legal. It seems to work just fine:
-`this.setState({...this.state, exp0: {title: !this.state.exp0.title}})`
+```javascript
+this.setState({...this.state, exp0: {title: !this.state.exp0.title}})
+```
 
 I wonder if this is better or worse than the updater function in the code block above. The [official React doc](https://reactjs.org/docs/react-component.html#setstate), recommends the updater function.
 
