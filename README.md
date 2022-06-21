@@ -25,7 +25,7 @@ This assignment starts with class-based components and later converted to funcit
 I wanted an intuitive user experience where clicking on sections of the resume would generate input fields.
 
 I decided to use states to determine if the editing window should appear or not. For example, state structure looks like this:
-```
+```javascript
 this.state = {
   skill0: {
     skill: 'Programming Languages',
@@ -49,7 +49,7 @@ For the purpose of this project, using the destructured object in setState would
 
 ### Converting all class components to funciton components
 My class components are states with deeply nested objects. In order to update specific sections of the state object, I had to copy the previous object, make changes to it, and then `setState()` the new object like this:
-```
+```javascript
   updateState = (e, objNum, key) => {
     const newState = Object.assign({}, this.state);
     newState[objNum][key] = e.target.value;
@@ -58,7 +58,7 @@ My class components are states with deeply nested objects. In order to update sp
 ```
 
 For function components, I decided to pair each state with its edit state. For example:
-```
+```javascript
 const [skill0, setSkill0] = useState({
   value: 'Programming Languages',
   edit: false,
@@ -66,7 +66,7 @@ const [skill0, setSkill0] = useState({
 ```
 
 In order to iterate through all of these value/edit states, I placed all of these states into different arrays. for example, all the state variables are in one array, and all the set state variables are in another. For example:
-```
+```javascript
 const skillArr = [skill0, skill1];
 const setSkillArr = [setSkill0, setSkill1];
 const descArr = [desc0, desc1];
